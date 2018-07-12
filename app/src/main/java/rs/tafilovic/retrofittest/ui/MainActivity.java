@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onResult(Movies result) {
         if(result!=null && result.getResults()!=null){
-            StringBuffer sb=new StringBuffer();
+            StringBuilder sb=new StringBuilder();
             for(Result r:result.getResults()){
-                sb.append("Title: "+r.getOriginalTitle()+"\n\r");
+                sb.append("Title: ").append(r.getOriginalTitle()).append("\n");
             }
             tvResponse.setText(sb.toString());
         }

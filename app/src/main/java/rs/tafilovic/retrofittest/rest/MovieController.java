@@ -1,5 +1,7 @@
 package rs.tafilovic.retrofittest.rest;
 
+import android.support.annotation.NonNull;
+
 import java.lang.ref.WeakReference;
 
 import retrofit2.Call;
@@ -20,14 +22,14 @@ public class MovieController extends BaseController implements Callback<Movies> 
     }
 
     @Override
-    public void onResponse(Call<Movies> call, retrofit2.Response<Movies> response) {
+    public void onResponse(@NonNull Call<Movies> call, @NonNull retrofit2.Response<Movies> response) {
         if (response.isSuccessful() && weakCallback.get() != null) {
             weakCallback.get().onResult(response.body());
         }
     }
 
     @Override
-    public void onFailure(Call<Movies> call, Throwable t) {
+    public void onFailure(@NonNull Call<Movies> call, @NonNull Throwable t) {
         if (weakCallback.get() != null) {
             weakCallback.get().onError(t);
         }
